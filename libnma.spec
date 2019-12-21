@@ -34,6 +34,7 @@ Requires:	glib2 >= 1:2.23
 Requires:	gtk+3 >= 3.10
 Requires:	iso-codes
 Requires:	mobile-broadband-provider-info
+Obsoletes:	NetworkManager-gtk-lib < 1.8.26
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,6 +51,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	NetworkManager-devel >= 2:1.7
 Requires:	glib2-devel >= 1:2.23
 Requires:	gtk+3-devel >= 3.10
+Obsoletes:	NetworkManager-gtk-lib-devel < 1.8.26
 
 %description devel
 Header files for libnma library.
@@ -73,6 +75,7 @@ Statyczna biblioteka libnma.
 Summary:	API documentation for libnma library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libnma
 Group:		Documentation
+Obsoletes:	NetworkManager-gtk-lib-apidocs < 1.8.26
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
 %endif

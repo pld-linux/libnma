@@ -3,30 +3,35 @@
 # Conditional build:
 %bcond_without	apidocs		# gtk-doc documentation
 %bcond_without	static_libs	# shared library
+%bcond_without	vala		# Vala API
 #
 Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
-Version:	1.8.26
+Version:	1.8.28
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libnma/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	c00af7ae33376a953b87e47454a924a7
+# Source0-md5:	094c45d7694b153612cbdc3c713edcb5
 URL:		https://gitlab.gnome.org/GNOME/libnma
 BuildRequires:	NetworkManager-devel >= 2:1.7
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	gettext-tools >= 0.18
 BuildRequires:	gcr-ui-devel >= 3.14
+BuildRequires:	gettext-tools >= 0.18
 BuildRequires:	glib2-devel >= 1:2.23
 BuildRequires:	gobject-introspection-devel >= 0.9.6
-BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gtk+3-devel >= 3.10
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	tar >= 1:1.22
+%if %{with vala}
+BuildRequires:	vala >= 2:0.17.1.24
+BuildRequires:	vala-NetworkManager
+%endif
 BuildRequires:	xz
 Requires:	NetworkManager-libs >= 2:1.7
 Requires:	gcr-ui >= 3.14
@@ -86,6 +91,22 @@ API documentation for libnma library.
 %description apidocs -l pl.UTF-8
 Dokumentacja API biblioteki libnma.
 
+%package -n vala-libnma
+Summary:	Vala API for libnma library
+Summary(pl.UTF-8):	API języka Vala do biblioteki libnma
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	vala >= 2:0.17.1.24
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description -n vala-libnma
+Vala API for libnma library.
+
+%description -n vala-libnma -l pl.UTF-8
+API języka Vala do biblioteki libnma.
+
 %prep
 %setup -q
 
@@ -100,6 +121,7 @@ Dokumentacja API biblioteki libnma.
 	--disable-mobile-broadband-provider-info \
 	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static} \
+	%{__enable_disable vala} \
 	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
@@ -113,7 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libnma.la
 
-%find_lang nm-applet
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -121,12 +143,13 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f nm-applet.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc NEWS
 %attr(755,root,root) %{_libdir}/libnma.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libnma.so.0
 %{_libdir}/girepository-1.0/NMA-1.0.typelib
+%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 
 %files devel
 %defattr(644,root,root,755)
@@ -145,4 +168,11 @@ rm -rf $RPM_BUILD_ROOT
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/libnma
+%endif
+
+%if %{with vala}
+%files -n vala-libnma
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/libnma.deps
+%{_datadir}/vala/vapi/libnma.vapi
 %endif

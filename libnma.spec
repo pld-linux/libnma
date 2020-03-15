@@ -9,7 +9,7 @@ Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
 Version:	1.8.28
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libnma/1.8/%{name}-%{version}.tar.xz
@@ -39,6 +39,7 @@ Requires:	glib2 >= 1:2.23
 Requires:	gtk+3 >= 3.10
 Requires:	iso-codes
 Requires:	mobile-broadband-provider-info
+Provides:	NetworkManager-gtk-lib = %{version}-%{release}
 Obsoletes:	NetworkManager-gtk-lib < 1.8.26
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -56,6 +57,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	NetworkManager-devel >= 2:1.7
 Requires:	glib2-devel >= 1:2.23
 Requires:	gtk+3-devel >= 3.10
+Provides:	NetworkManager-gtk-lib-devel = %{version}-%{release}
 Obsoletes:	NetworkManager-gtk-lib-devel < 1.8.26
 
 %description devel

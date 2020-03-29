@@ -20,7 +20,7 @@ BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gcr-ui-devel >= 3.14
 BuildRequires:	gettext-tools >= 0.18
-BuildRequires:	glib2-devel >= 1:2.23
+BuildRequires:	glib2-devel >= 1:2.38
 BuildRequires:	gobject-introspection-devel >= 0.9.6
 BuildRequires:	gtk+3-devel >= 3.10
 BuildRequires:	gtk-doc >= 1.0
@@ -35,7 +35,7 @@ BuildRequires:	vala-NetworkManager
 BuildRequires:	xz
 Requires:	NetworkManager-libs >= 2:1.7
 Requires:	gcr-ui >= 3.14
-Requires:	glib2 >= 1:2.23
+Requires:	glib2 >= 1:2.38
 Requires:	gtk+3 >= 3.10
 Requires:	iso-codes
 Requires:	mobile-broadband-provider-info
@@ -55,7 +55,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libnma
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	NetworkManager-devel >= 2:1.7
-Requires:	glib2-devel >= 1:2.23
+Requires:	glib2-devel >= 1:2.38
 Requires:	gtk+3-devel >= 3.10
 Provides:	NetworkManager-gtk-lib-devel = %{version}-%{release}
 Obsoletes:	NetworkManager-gtk-lib-devel < 1.8.26

@@ -83,9 +83,7 @@ Summary:	API documentation for libnma library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libnma
 Group:		Documentation
 Obsoletes:	NetworkManager-gtk-lib-apidocs < 1.8.26
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for libnma library.
@@ -99,9 +97,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libnma
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.17.1.24
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libnma
 Vala API for libnma library.

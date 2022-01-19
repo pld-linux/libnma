@@ -1,4 +1,4 @@
-# TODO: gtk4 variant
+# TODO: gtk4 variant (--with-libnma-gtk4; uses gtk4-builder-tool, which fails without $DISPLAY)
 #
 # Conditional build:
 %bcond_without	apidocs		# gtk-doc documentation
@@ -8,12 +8,12 @@
 Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
-Version:	1.8.32
+Version:	1.8.34
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/libnma/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	10505d481f650442246f9c957e90219b
+# Source0-md5:	145967daaaf36ee83ee9fdb9b228caf7
 URL:		https://gitlab.gnome.org/GNOME/libnma
 BuildRequires:	NetworkManager-devel >= 2:1.7
 BuildRequires:	autoconf >= 2.63

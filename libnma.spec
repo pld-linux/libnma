@@ -27,7 +27,7 @@ BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.98
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	tar >= 1:1.22
 %if %{with vala}
 BuildRequires:	vala >= 2:0.17.1.24

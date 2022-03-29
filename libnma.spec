@@ -100,6 +100,7 @@ API języka Vala do biblioteki libnma.
 Summary:	Common data for libnma libraries
 Summary(pl.UTF-8):	Wspólne dane bibliotek libnma
 Group:		X11/Libraries
+Requires(post,postun):	glib2 >= 1:2.38
 Conflicts:	libnma < 1.8.36-2
 
 %description data
@@ -227,6 +228,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
+
+%post data
+%glib_compile_schemas
+
+%postun data
+%glib_compile_schemas
 
 %files
 %defattr(644,root,root,755)

@@ -8,12 +8,12 @@
 Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
-Version:	1.8.38
+Version:	1.8.40
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/libnma/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	0cebdf77d349bca1d64574aac1ee17cb
+# Source0-md5:	f6789fffabb347b1cfe0ae794ae1177a
 URL:		https://gitlab.gnome.org/GNOME/libnma
 BuildRequires:	NetworkManager-devel >= 2:1.7
 BuildRequires:	autoconf >= 2.63

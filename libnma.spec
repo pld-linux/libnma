@@ -1,3 +1,4 @@
+# TODO: gcr-4-gtk4 >= 3.90? (needs update for gcr-4 3.92?)
 #
 # Conditional build:
 %bcond_without	apidocs		# gtk-doc documentation
@@ -8,12 +9,12 @@
 Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
-Version:	1.8.40
+Version:	1.10.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.gnome.org/sources/libnma/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	f6789fffabb347b1cfe0ae794ae1177a
+Source0:	https://download.gnome.org/sources/libnma/1.10/%{name}-%{version}.tar.xz
+# Source0-md5:	36e08c52b88eded52b7c1b746300816c
 URL:		https://gitlab.gnome.org/GNOME/libnma
 BuildRequires:	NetworkManager-devel >= 2:1.7
 BuildRequires:	autoconf >= 2.63
@@ -22,7 +23,7 @@ BuildRequires:	gcr-ui-devel >= 3.14
 BuildRequires:	gettext-tools >= 0.18
 BuildRequires:	glib2-devel >= 1:2.38
 BuildRequires:	gobject-introspection-devel >= 0.9.6
-BuildRequires:	gtk+3-devel >= 3.10
+BuildRequires:	gtk+3-devel >= 3.12
 BuildRequires:	gtk-doc >= 1.0
 %{?with_gtk4:BuildRequires:	gtk4-devel >= 4.6.2}
 BuildRequires:	libtool >= 2:2.2.6
@@ -39,7 +40,7 @@ Requires:	%{name}-data = %{version}-%{release}
 Requires:	NetworkManager-libs >= 2:1.7
 Requires:	gcr-ui >= 3.14
 Requires:	glib2 >= 1:2.38
-Requires:	gtk+3 >= 3.10
+Requires:	gtk+3 >= 3.12
 Requires:	iso-codes
 Requires:	mobile-broadband-provider-info
 Provides:	NetworkManager-gtk-lib = %{version}-%{release}
@@ -60,7 +61,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-headers = %{version}-%{release}
 Requires:	NetworkManager-devel >= 2:1.7
 Requires:	glib2-devel >= 1:2.38
-Requires:	gtk+3-devel >= 3.10
+Requires:	gtk+3-devel >= 3.12
 Provides:	NetworkManager-gtk-lib-devel = %{version}-%{release}
 Obsoletes:	NetworkManager-gtk-lib-devel < 1.8.26
 

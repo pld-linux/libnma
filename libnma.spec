@@ -1,25 +1,29 @@
-# TODO: gcr-4-gtk4 >= 3.90? (needs update for gcr-4 3.92?)
 #
 # Conditional build:
 %bcond_without	apidocs		# gtk-doc documentation
 %bcond_without	static_libs	# shared library
 %bcond_without	vala		# Vala API
 %bcond_without	gtk4		# Gtk4 variant
+%bcond_without	gcr4		# use gcr4
 #
 Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
-Version:	1.10.2
+Version:	1.10.4
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/libnma/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	5ace2e91cceccb61279cd31947c92037
+# Source0-md5:	d4503a9a708b2cbd949a3335a9f10d47
 URL:		https://gitlab.gnome.org/GNOME/libnma
 BuildRequires:	NetworkManager-devel >= 2:1.7
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
+%if %{with gcr4}
+BuildRequires:	gcr4-devel >= 3.92
+%else
 BuildRequires:	gcr-ui-devel >= 3.14
+%endif
 BuildRequires:	gettext-tools >= 0.18
 BuildRequires:	glib2-devel >= 1:2.38
 BuildRequires:	gobject-introspection-devel >= 0.9.6
@@ -36,9 +40,14 @@ BuildRequires:	vala >= 2:0.17.1.24
 BuildRequires:	vala-NetworkManager
 %endif
 BuildRequires:	xz
+%{!?with_gcr4:BuildConflicts:	gcr4-devel >= 3.92}
 Requires:	%{name}-data = %{version}-%{release}
 Requires:	NetworkManager-libs >= 2:1.7
+%if %{with gcr4}
+Requires:	gcr-libs >= 3.92
+%else
 Requires:	gcr-ui >= 3.14
+%endif
 Requires:	glib2 >= 1:2.38
 Requires:	gtk+3 >= 3.12
 Requires:	iso-codes
@@ -141,7 +150,11 @@ Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm) dla GTK 4
 Group:		X11/Libraries
 Requires:	%{name}-data = %{version}-%{release}
 Requires:	NetworkManager-libs >= 2:1.7
+%if %{with gcr4}
+Requires:	gcr4-libs >= 3.92
+%else
 Requires:	gcr-ui >= 3.14
+%endif
 Requires:	glib2 >= 1:2.38
 Requires:	gtk4 >= 4.6.2
 
@@ -257,6 +270,7 @@ rm -rf $RPM_BUILD_ROOT
 %files data -f %{name}.lang
 %defattr(644,root,root,755)
 %doc NEWS
+%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.eap.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 
 %files headers

@@ -235,6 +235,10 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libnma*.la
 
+# will be dropped eventually by upstream
+# https://gitlab.gnome.org/GNOME/libnma/-/merge_requests/42
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
+
 %find_lang %{name}
 
 %clean
@@ -274,7 +278,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS
 %{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.eap.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 
 %files headers
 %defattr(644,root,root,755)

@@ -249,6 +249,9 @@ rm -rf $RPM_BUILD_ROOT
 %postun data
 %glib_compile_schemas
 
+%post	gtk4 -p /sbin/ldconfig
+%postun	gtk4 -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libnma.so.*.*.*

@@ -10,7 +10,7 @@ Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
 Version:	1.10.4
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/libnma/1.10/%{name}-%{version}.tar.xz
@@ -44,7 +44,7 @@ BuildRequires:	xz
 Requires:	%{name}-data = %{version}-%{release}
 Requires:	NetworkManager-libs >= 2:1.7
 %if %{with gcr4}
-Requires:	gcr-libs >= 3.92
+Requires:	gcr4-libs >= 3.92
 %else
 Requires:	gcr-ui >= 3.14
 %endif

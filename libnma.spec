@@ -9,13 +9,12 @@
 Summary:	NetworkManager UI utilities (libnm version)
 Summary(pl.UTF-8):	Narzędzia UI NetworkManagera (wersja libnm)
 Name:		libnma
-Version:	1.10.4
-Release:	3
+Version:	1.10.6
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/libnma/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	d4503a9a708b2cbd949a3335a9f10d47
-Patch0:		con-edit.patch
+# Source0-md5:	71c7ce674fea1fae8f1368a7fcb6ff43
 URL:		https://gitlab.gnome.org/GNOME/libnma
 BuildRequires:	NetworkManager-devel >= 2:1.7
 BuildRequires:	autoconf >= 2.63
@@ -209,7 +208,6 @@ API języka Vala do biblioteki libnma dla GTK 4.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
